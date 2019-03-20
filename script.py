@@ -5,8 +5,8 @@ import os
 
 def main():
     #initialize bots
-    r1 = praw.Reddit('bot1')
-    subreddit = r1.subreddit("all")
+    r = praw.Reddit('bot1')
+    subreddit = r.subreddit("hiphopcirclejerk")
 
     for comment in subreddit.stream.comments(skip_existing=True):
         if re.search("!hoovaq", comment.body, re.IGNORECASE):
@@ -17,6 +17,7 @@ def main():
                 reply = comment.parent().body + " | " + comment.parent().body.replace("h","H")
             comment.reply(reply)
             print("Comment: " + comment.body)
+
 
 if __name__=="__main__":
     main()
